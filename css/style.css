@@ -163,7 +163,7 @@ form fieldset label {
     font-weight: bold;
     text-transform: uppercase;
 }
-form fieldset input,  form fieldset select {
+form fieldset input, form fieldset select {
 	border: none;
 	display: block;
 	padding: 8px;
@@ -177,6 +177,11 @@ form fieldset input,  form fieldset select {
     outline: none;
     color: #fff;
     font-weight: bold;
+    -webkit-appearance: no;
+}
+
+form fieldset input[type="checkbox"] {
+	-webkit-appearance: checkbox;
 }
 
 form fieldset input[type="submit"] {
@@ -343,3 +348,27 @@ ul.social_feed li a {
 	color: #fff;
 	text-decoration: none;
 }
+
+/* Questionnaire */
+form fieldset.questionnaire_answer label {
+	display:block;
+	float: left;
+	padding:8px 10px 8px 20px;
+	box-sizing: border-box;
+	float: left;
+}
+
+form fieldset.questionnaire_answer input[type="checkbox"] {
+	float: right;
+	margin:8px 0px;
+	width: auto;
+}
+
+
+form p.questionnaire_question {
+	clear: both;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0px 10px;
+}
+
