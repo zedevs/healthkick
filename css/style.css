@@ -184,6 +184,10 @@ form fieldset input[type="checkbox"] {
 	-webkit-appearance: checkbox;
 }
 
+form fieldset input[type="radio"] {
+	-webkit-appearance: radio;
+}
+
 form fieldset input[type="submit"] {
 	margin-top: 20px;
 	background: #69bfea;
@@ -358,7 +362,7 @@ form fieldset.questionnaire_answer label {
 	float: left;
 }
 
-form fieldset.questionnaire_answer input[type="checkbox"] {
+form fieldset.questionnaire_answer input[type="radio"] {
 	float: right;
 	margin:8px 0px;
 	width: auto;
