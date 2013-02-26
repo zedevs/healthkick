@@ -10,8 +10,8 @@ function onDeviceReady() {
 
 // Install initial database.
 function installDB(trans) {
-	trans.executeSql('CREATE TABLE settings (id unique, data)');
-	trans.executeSql('INSERT INTO settings (id, data) VALUES ("NAME", NULL)');
-	trans.executeSql('INSERT INTO settings (id, data) VALUES ("AGE", NULL)');
-	trans.executeSql('INSERT INTO settings (id, data) VALUES ("GENDER", NULL)');
+	trans.executeSql('CREATE TABLE IF NOT EXISTS settings (ID VARCHAR(255) PRIMARY KEY, value TEXT)');
+	//trans.executeSql('INSERT INTO settings (id, data) VALUES ("NAME", NULL)');
+	//trans.executeSql('INSERT INTO settings (id, data) VALUES ("AGE", NULL)');
+	//trans.executeSql('INSERT INTO settings (id, data) VALUES ("GENDER", NULL)');
 }
