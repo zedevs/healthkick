@@ -3,6 +3,7 @@
 ##James
      Database Intallation script
      Settings screen
+     Fix UI bugs - Done.
 
 
 ##Zdravko
