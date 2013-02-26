@@ -1,7 +1,7 @@
-$(function(){
-	$(window).scroll(function(e) {
-	  e.preventDefault();
-	});
+$(document).on('touchmove', function(e) {
+    if (!$(e.target).parents('#content').length) {
+        e.preventDefault();
+    }
 });
 // Load Cordova.
 document.addEventListener("deviceready", onDeviceReady, false);
