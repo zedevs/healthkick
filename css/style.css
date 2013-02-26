@@ -144,7 +144,7 @@ footer nav ul li a{
     overflow:auto;
     overflow-x: hidden;
     top: 40px;
-    bottom: 52px;
+    bottom: 57px;
     position: absolute;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -341,7 +341,7 @@ ul.social_feed li h3, ul.social_feed li p {
 ul.social_feed li img {
     float: left;
     width: 50px;
-    height: 50px
+    height: 50px;
     border: #fff 3px solid;
     margin: 10px;
     v-align: center;
