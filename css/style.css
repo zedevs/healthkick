@@ -14,6 +14,8 @@ body {
 	margin: 0;
 	font:normal 300 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 /* APPLICATION HEADER */
@@ -67,7 +69,7 @@ footer {
 }
 
 footer nav {
-	height: 40px;
+	height: 50px;
 	margin: 5px auto 2px auto;
 	width: 325px;
 }
