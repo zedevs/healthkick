@@ -1,8 +1,7 @@
 $(function(){
-	$('html, body').scroll(function(e) {
+	$(window).scroll(function(e) {
 	  e.preventDefault();
-	}
-	alert("hallo hallo");
+	});
 });
 // Load Cordova.
 document.addEventListener("deviceready", onDeviceReady, false);
