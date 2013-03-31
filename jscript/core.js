@@ -29,11 +29,11 @@ function installDB(trans) {
 
 /* CHECK IF THE APP HAS CONNECTIVITY */
 function checkConnection() {
-	var checkConnection = navigator.connection.type;
-	if(checkConnection !== Connection.UNKOWN && checkConnectiom !== Connection.NONE){
-		return true;
+    var checkConnection = navigator.connection.type;
+	if(checkConnection != Connection.UNKNOWN && checkConnection != Connection.NONE){
+        return true;
 	}
-	return false
+	return false;
 }
 
 /* MODAL-BOX HANDLER */
