@@ -13,7 +13,7 @@
         <header data-position="fixed">
             <h1>Social Zone</h1>
             <ul class="header_navigation">
-                <li><span class="icon icon-pencil"></span></li>
+                <li><span class="icon icon-pencil button-create-post"></span></li>
             </ul>
         </header>
         <section id="content">
@@ -85,18 +85,18 @@
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
-        <script type="text/javascript" src="js/FacebookConnect.js"></script>
+        <script type="text/javascript" src="jscript/social_zone.js"></script>
         
         <div class="dim hide"></div>
-        <div class="alert-box hide">
+        <div class="modal-box hide modal-internet-error">
             <h2>You're not connected to the Internet.</h2>
             <p>Hook your device up to either Wifi or 3G to access the Social Zone.</p>
             <button type="button">Retry <span class="icon icon-rotate"></span></button>
         </div>
         
-        <div class="dim"></div>
-        <div class="alert-box">
-            <h2>Post to Facebook</h2>
+        <div class="dim hide"></div>
+        <div class="modal-box hide modal-create-post">
+            <h2>Post to Facebook <span class="icon icon-cancel-2 modal-remove"></span></h2>
             <form>
                 <fieldset>
                     <textarea></textarea>

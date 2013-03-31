@@ -35,3 +35,11 @@ function checkConnection() {
 	}
 	return false
 }
+
+/* MODAL-BOX HANDLER */
+$(document).ready(function(){
+    $('.modal-remove').click(function(){
+		$(this).parents('.modal-box').hide();
+		$('.dim').hide();
+    });
+});
