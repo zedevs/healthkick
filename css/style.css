@@ -58,6 +58,14 @@ header ul.header_navigation li {
     padding: 5px;
 }
 
+header ul.header_navigation li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
 /* APPLICATION FOOTER */
 
 footer {
@@ -139,7 +147,7 @@ form fieldset label {
     font-weight: bold;
     text-transform: uppercase;
 }
-form fieldset input, form fieldset select, form fieldset button {
+form fieldset input, form fieldset select, form fieldset button, .button, form fieldset textarea {
 	border: none;
 	display: block;
 	padding: 8px;
@@ -154,6 +162,14 @@ form fieldset input, form fieldset select, form fieldset button {
     color: #fff;
     font-weight: bold;
     -webkit-appearance: no;
+    text-align: center;
+}
+
+a.button {
+    text-decoration: none;
+}
+.button.red {
+    background: #c13c3c;
 }
 
 form fieldset input[type="checkbox"] {
@@ -343,6 +359,14 @@ ul.social_feed li a {
 }
 
 /* Questionnaire */
+form fieldset.questionnaire_answer {
+    padding: 0 20px 0 0;
+}
+
+form fieldset.questionnaire_answer.correct_answer {
+    background: #00b40d;
+}
+
 form fieldset.questionnaire_answer label {
 	display:block;
 	float: left;
@@ -402,12 +426,12 @@ form p.questionnaire_question {
     border-radius: 5px;
     background: #000;
     width: 80%;
-    height: 130px;
+    height: auto;
     position: fixed;
     top: 50%;
     left: 50%;
     margin-left: -40%;
-    margin-top: -65px;
+    margin-top: -100px;
     z-index: 9999;
 }
 .alert-box h2 {
@@ -422,10 +446,11 @@ form p.questionnaire_question {
 	display: block;
 	padding: 8px;
     margin: 0 auto;
-	background: #0e62a1;
+	margin-top: 20px;
+	background: #69bfea;
     border-radius: 0;
     -webkit-appearance: none;
-    width: 80%;
+    width: 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 5px;

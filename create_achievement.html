@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen, projection">
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen, projection">
+        <link rel="stylesheet" type="text/css" href="css/icons.css"media="screen, projection">
+        <title>Create Achievement</title>
+    </head>
+    <body>
+        <header>
+            <h1>Create Achievement</h1>
+        </header>
+        <section id="content">
+        	<form>
+                <fieldset>
+                    <label>Achievement Name</label>
+                    <input type="text">
+                    <label>Measurement</label>
+                    <select>
+                        <option>Gram</option>
+                        <option>Kilogram </option>
+                        <option>Millimetres</option>
+                        <option>Centimeters</option>
+                        <option>Meter</option>
+                        <option>Kilometer</option>
+                    </select>
+                    <label>Target</label>
+                    <input type="number" pattern="[0-9]*">
+                    
+                    <input type="submit" value="Create Achievement!">
+                </fieldset>
+            </form>
+            
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li class="achievements"><a href="achievements.html"><span aria-hidden="true" class="icon icon-heart"></span>Gains</a></li>
+                    <li class="feed"><a href="feed.html"><span aria-hidden="true" class="icon icon-inbox"></span>Feed</a></li>
+                    <li class="dashboard"><a href="dashboard.html"><span aria-hidden="true" class="icon icon-chart-2"></span>Dashboard</a></li>
+                    <li class="socialzone"><a href="social_zone.html"><span aria-hidden="true" class="icon icon-comments"></span>Social</a></li>
+                    <li class="settings">
+                    <a href="settings.html"><span aria-hidden="true" class="icon icon-cog"></span>Settings</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+        <script type="text/javascript" src="jscript/jquery.js"></script>
+        <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
+        <script type="text/javascript" src="jscript/core.js"></script>
+        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
+    </body>
+</html>
