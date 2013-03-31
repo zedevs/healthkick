@@ -18,3 +18,6 @@ function onReadySocialZone() {
 		}
 	});
 }
+
+/* LISTEN FOR CONNECTION DROP */
+document.addEventListener("offline", function() { $('.modal-internet-error, .dim').show(); }, false);
