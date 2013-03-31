@@ -178,6 +178,10 @@ a.button {
     background: #c13c3c;
 }
 
+.button.lightblue {
+    background: #69bfea;
+}
+
 form fieldset input[type="checkbox"] {
 	-webkit-appearance: checkbox;
 }
@@ -365,13 +369,6 @@ ul.social_feed li a {
 }
 
 /* Questionnaire */
-form fieldset.questionnaire_answer {
-    padding: 0 20px 0 0;
-}
-
-form fieldset.questionnaire_answer.correct_answer {
-    background: #00b40d;
-}
 
 form fieldset.questionnaire_answer label {
 	display:block;
@@ -446,7 +443,9 @@ form p.questionnaire_question {
 	text-align: center;
 	font-weight: bold;
 }
-
+.modal-box .button_container {
+	margin: 8px;
+}
 .modal-box button {
     border: none;
 	display: block;

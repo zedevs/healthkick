@@ -14,49 +14,12 @@
             <h1>Questionnaire</h1>
         </header>
         <section id="content">
-        	<form>
-        		
-            	<p class="questionnaire_question">Are you fat?</p>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_1_answer_1">1) Yup</label> 
-                	<input type="radio" id="question_1_answer_1" name="question_1_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer correct_answer">
-                	<label for="question_1_answer_2">2) Nope</label>
-                	<input type="radio" id="question_1_answer_2" name="question_1_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_1_answer_3">3) Maybe</label>
-                	<input type="radio" id="question_1_answer_3" name="question_1_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_1_answer_4">4) Sometimes</label>
-                	<input type="radio" id="question_1_answer_4" name="question_1_answer">
-                </fieldset>
-                
-                <p class="questionnaire_question">Are you fat?</p>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_2_answer_1">1) Yup</label> 
-                	<input type="radio" id="question_2_answer_1" name="question_2_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_2_answer_2">2) Nope</label>
-                	<input type="radio" id="question_2_answer_2" name="question_2_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer correct_answer">
-                	<label for="question_2_answer_3">3) Maybe</label>
-                	<input type="radio" id="question_2_answer_3" name="question_2_answer">
-                </fieldset>
-                <fieldset class="questionnaire_answer">
-                	<label for="question_2_answer_4">4) Sometimes</label>
-                	<input type="radio" id="question_2_answer_4" name="question_2_answer">
-                </fieldset>
-               
-				
-				<fieldset>
-				<input type="submit" value="Check!">
-				</fieldset>
-            </form>
+        	<form id="questionnaire_container" class="hide">
+        	
+        	<fieldset class="actions">
+        		<input type="submit" value="Check!">
+        	</fieldset>
+        	</form>
             
         </section>
         <footer>
@@ -72,9 +35,34 @@
                 </ul>
             </nav>
         </footer>
+        
+        <div class="dim"></div>
+        <div class="modal-box modal-downloading">
+            <h2>We won't be long..</h2>
+            <p>We're quickly downloading the daily questionnaire to your device.</p>
+        </div>
+        
+        <div class="modal-box hide modal-questionnaire-results">
+            <h2>Today's results</h2>
+            <p>You achieved <span id="questionnaire_percentage"></span>% in today's questionnaire!</p>
+            <div class="button_container">
+            	<a class="button lightblue" href="dashboard.html">Return to the dashboard</a>
+            </div>
+        </div>
+        
+        <div class="modal-box hide modal-internet-error">
+            <h2>You're not connected to the Internet.</h2>
+            <p>Hook your device up to either Wifi or 3G to access the Social Zone.</p>
+            <div class="button_container">
+            	<a class="button lightblue retry-internet-connection">Retry</a>
+            </div>
+        </div>
+        
+        
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
+        <script type="text/javascript" src="jscript/questionnaire.js"></script>
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>
