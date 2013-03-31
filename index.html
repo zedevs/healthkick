@@ -14,14 +14,11 @@
         <section id="login_container">
             <img src="images/logo.png">
             <form action="dashboard.html">
+                <p class="descriptive-text center">Welcome back, James</p>
                 <fieldset>
-                    <label>Username</label>
-                    <input type="text">
                     <label>Password</label>
                     <input type="text">
-                    <section id="slide_to_login">
-                    	<span class="icon icon-arrow-right-2"></span>
-                    </section>
+                    <button type="submit">Unlock <span class="icon icon-arrow-right-2"></span></button>
                 </fieldset>
             </form>
                         
@@ -31,15 +28,5 @@
 		<script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>        
 		<script type="text/javascript" src="jscript/core.js"></script>
 		<!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
-		<script>
-		
-		$(function(){
-			// Show a swipe event on swipe test
-			$('#slide_to_login').click(function(){
-				window.location = "dashboard.html";
-			});
-		});
-		</script>        
-        
     </body>
 </html>

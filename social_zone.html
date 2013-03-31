@@ -85,6 +85,26 @@
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
+        <script type="text/javascript" src="js/FacebookConnect.js"></script>
+        
+        <div class="dim"></div>
+        <div class="processing-box">
+            <h2>You're not connected to the Internet.</h2>
+            <p>Hook your device up to either Wifi or 3G to access the Social Zone.</p>
+            <button type="button">Retry <span class="icon icon-rotate"></span></button>
+        </div>
+        
+        <!--
+         Things to write
+         
+         1) Check if the user is connected to the internet - If not pop up a modal box with a refresh icon until they connect
+         2) Check if the user has previously signed into Facebook.
+         3) If they haven't signed in show them the sign in window.
+         4) Once they are signed in, show them the feed
+         5) Setup user posts
+         
+         
+         -->
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>
