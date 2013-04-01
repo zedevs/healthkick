@@ -4,17 +4,17 @@
      Database Intallation script
      Settings screen
      Fix UI bugs - Done.
-
+     Achievments – Creation, add button - Done
+     Questionnaire - Done
+	 Social Integration - Partially completed
 
 ##Zdravko
-     RSS Feed
+    RSS Feed
     ? Save RSS offline
     Device testing
     Research dashboard graphs
-
-## Unasigned
-    Achievments – Creation, add button
+    
 
 ### Completed
-     James – UI, something else, ...
-     Zdravko – Nothing yet, something else, ...
+     James – UI, Questionnaire, ...
+     Zdravko – Nothing yet, ...

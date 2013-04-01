@@ -140,6 +140,10 @@ footer nav ul li a{
     width: 100%;
 }
 
+#content.nofooter {
+	bottom: 0;
+}
+
 /* FORM STYLING */
 
 form fieldset {
@@ -465,7 +469,7 @@ form p.questionnaire_question {
     -webkit-appearance: no;
 }
 
-.modal-remove {
+span.modal-remove {
     float:right;
     font-size: 20px;
     margin: 0 10px 0 0;

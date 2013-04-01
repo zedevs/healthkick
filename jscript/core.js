@@ -7,24 +7,17 @@ $(document).on('touchmove', function(e) {
 
 /* READY LISTENER */
 document.addEventListener("deviceready", onDeviceReady, false);
-
+onDeviceReady();
 /* RUN SCRIPTS WHEN READY */
 function onDeviceReady() {
-	var db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
-	db.transaction(installDB);
-}
-
-
-/* INSTALL THE DATABASE ON THE FIRST RUN */
-function installDB(trans) {
-	var firstRun = window.localStorage.getItem("firstRun");
-	if(firstRun == null){
-		window.localStorage.setItem("firstRun", "false"); 
-		trans.executeSql('CREATE TABLE IF NOT EXISTS settings (ID VARCHAR(255) PRIMARY KEY, string TEXT, integer INT(255))');
-		trans.executeSql('INSERT INTO settings (id, string, integer) VALUES ("NAME", NULL, NULL)');
-		trans.executeSql('INSERT INTO settings (id, string, integer) VALUES ("AGE", NULL, NULL)');
-		trans.executeSql('INSERT INTO settings (id, string, integer) VALUES ("GENDER", NULL, NULL)');
+	var appConfigured = window.localStorage.getItem("appConfigured");
+	var current_location = window.location.toString();
+	if(appConfigured == null && current_location.substr(-17) != "first_launch.html"){
+		//window.localStorage.setItem("appConfigured", "true");
+		// ^^ Set this in the app SETUP.
+		window.location = "first_launch.html";	
 	}
+	var db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
 }
 
 /* CHECK IF THE APP HAS CONNECTIVITY */

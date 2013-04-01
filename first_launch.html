@@ -13,30 +13,43 @@
         <header>
             <h1>HEALTHKICK</h1>
         </header>
-        <section id="content">
+        <section id="content" class="nofooter">
         	<p class="descriptive-text">Lets get started, you just need to enter a few pieces of information and then you're ready to go!</p>
-        	<form>
+        	<form id="first_launch_form">
                 <fieldset>
-                    <label>Name</label>
-                    <input type="text">
-                    <label>Age</label>
-                    <input type="number" pattern="[0-9]*">
-                    <label>Height(CM)</label>
-                    <input type="number" pattern="[0-9]*">
+                    <label for="first_launch_name">Name</label>
+                    <input type="text" id="first_launch_name">
+                    <label for="first_launch_age">Age</label>
+                    <input type="number" pattern="[0-9]*" id="first_launch_age">
+                    <label for="first_launch_height">Height(CM)</label>
+                    <input type="number" pattern="[0-9]*" id="first_launch_height">
                     <p class="form-helper">Still growing? Not a problem you can update this later!</p>
-                    <label>Gender</label>
-                    <select>
+                    <label for="first_launch_gender">Gender</label>
+                    <select id="first_launch_gender">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
+                    <label for="first_launch_passcode">Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="first_launch_passcode">
+                    <label for="first_launch_retype_passcode">Re-type Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="first_launch_retype_passcode">
                     <input type="submit" value="Done!">
                 </fieldset>
             </form>
             
+            <div class="dim hide"></div>
+            <div class="modal-box hide modal-validation-error">
+                <h2>Oops!</h2>
+                <p class="modal-validation-text"></p>
+                <div class="button_container">
+                 	<a class="button lightblue modal-remove">Okay!</a>
+                </div>
+            </div>
         </section>
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
+        <script type="text/javascript" src="jscript/first_launch.js"></script>
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>
