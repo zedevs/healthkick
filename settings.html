@@ -14,16 +14,16 @@
             <h1>Settings</h1>
         </header>
         <section id="content">
-        	<form>
+        	<form id="settings_form">
                 <fieldset>
-                    <label>Name</label>
-                    <input type="text">
-                    <label>Age</label>
-                    <input type="number" pattern="[0-9]*">
-                    <label>Height(CM)</label>
-                    <input type="number" pattern="[0-9]*">
-                    <label>Gender</label>
-                    <select>
+                    <label for="settings_name">Name</label>
+                    <input type="text" id="settings_name">
+                    <label for="settings_age">Age</label>
+                    <input type="number" pattern="[0-9]*" id="settings_age">
+                    <label for="settings_height">Height(CM)</label>
+                    <input type="number" pattern="[0-9]*" id="settings_height">
+                    <label for="settings_gender">Gender</label>
+                    <select id="settings_gender">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -45,9 +45,19 @@
                 </ul>
             </nav>
         </footer>
+        
+        <div class="dim hide"></div>
+        <div class="modal-box hide modal-validation-error">
+            <h2 class="modal-validation-heading"></h2>
+            <p class="modal-validation-text"></p>
+            <div class="button_container">
+             	<a class="button lightblue modal-remove">Okay!</a>
+            </div>
+        </div>
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
+        <script type="text/javascript" src="jscript/settings.js"></script>
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>

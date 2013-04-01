@@ -50,8 +50,8 @@ function installDatabase(trans){
 	trans.executeSql('CREATE TABLE IF NOT EXISTS `settings` (`ID` varchar(255) NOT NULL, `string` varchar(255) NULL, `integer` int(255) NULL, PRIMARY KEY (`ID`))');
 	trans.executeSql('DELETE FROM `settings`');
 	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("NAME", "'+$('#first_launch_name').val()+'", NULL)');
-	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("AGE", NULL, NULL)');
-	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("HEIGHT", NULL, NULL)');
+	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("AGE", NULL, "'+parseInt($('#first_launch_age').val())+'")');
+	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("HEIGHT", NULL, "'+parseInt($('#first_launch_height').val())+'")');
 	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("GENDER", "'+$('#first_launch_gender').val()+'", NULL)');
 	trans.executeSql('INSERT INTO `settings` (`id`, `string`, `integer`) VALUES ("PASSCODE", "'+$('#first_launch_passcode').val()+'", NULL)');
 }
