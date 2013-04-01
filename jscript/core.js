@@ -1,3 +1,4 @@
+var db;
 /* ONLY ALLOW SCROLLING ON THE CONTENT AREA */
 $(document).on('touchmove', function(e) {
     if (!$(e.target).parents('#content').length) {
@@ -8,16 +9,15 @@ $(document).on('touchmove', function(e) {
 /* READY LISTENER */
 document.addEventListener("deviceready", onDeviceReady, false);
 onDeviceReady();
+
 /* RUN SCRIPTS WHEN READY */
 function onDeviceReady() {
 	var appConfigured = window.localStorage.getItem("appConfigured");
 	var current_location = window.location.toString();
 	if(appConfigured == null && current_location.substr(-17) != "first_launch.html"){
-		//window.localStorage.setItem("appConfigured", "true");
-		// ^^ Set this in the app SETUP.
 		window.location = "first_launch.html";	
 	}
-	var db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
+	db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
 }
 
 /* CHECK IF THE APP HAS CONNECTIVITY */

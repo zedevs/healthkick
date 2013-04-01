@@ -6,27 +6,37 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
         <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen, projection">
-        <link rel="stylesheet" type="text/css" href="css/icons.css"media="screen, projection">
+        <link rel="stylesheet" type="text/css" href="css/icons.css" media="screen, projection">
         <title>Login</title>
     </head>
     <body>
        
         <section id="login_container">
-            <img src="images/logo.png">
-            <form action="dashboard.html">
-                <p class="descriptive-text center">Welcome back, James</p>
+            <img src="images/logo.png" alt="logo">
+            <form id="login_form">
+                <p class="descriptive-text center">Welcome back, <span id="login_name"></span></p>
                 <fieldset>
                     <label>Passcode</label>
-                    <input type="password" pattern="[0-9]*" maxlength="4">
+                    <input type="password" pattern="[0-9]*" id="login_passcode" maxlength="4">
                     <button type="submit">Unlock</button>
                 </fieldset>
             </form>
                         
         </section>
 		
+		<div class="dim hide"></div>
+		<div class="modal-box hide modal-invalid-passcode">
+		   <h2>Oops, incorrect passcode!</h2>
+		   <p>Please try entering your passcode again.</p>
+		   <div class="button_container">
+		   	<a class="button lightblue modal-remove">Okay!</a>
+		   </div>
+		</div>
+		
 		<script type="text/javascript" src="jscript/jquery.js"></script>
 		<script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>        
 		<script type="text/javascript" src="jscript/core.js"></script>
+		<script type="text/javascript" src="jscript/index.js"></script>
 		<!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>

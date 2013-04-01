@@ -177,6 +177,7 @@ form fieldset input, form fieldset select, form fieldset button, .button, form f
 
 a.button {
     text-decoration: none;
+    cursor: pointer;
 }
 .button.red {
     background: #c13c3c;

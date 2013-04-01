@@ -57,7 +57,8 @@ $(document).ready(function(){
 	}
 	loadQuestions();
 	
-	$('#questionnaire_container').submit(function(){
+	$('#questionnaire_container').submit(function(e){
+		e.preventDefault();
 		if(storeAnswers.length > 0){
 			var correct = 0;
 			var wrong = 0;
