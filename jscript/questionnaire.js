@@ -1,6 +1,7 @@
 /* CREATE QUESTIONNAIRE HANDLER */
 $(document).ready(function(){
 	var questions_loaded = false;
+	var storeAnswers = new Array();
 	
 	document.addEventListener("deviceready", onReadySocialZone, false);
 	
@@ -35,13 +36,13 @@ $(document).ready(function(){
 	}, false);
 	
 	function loadQuestions(){
-		var storeAnswers = new Array();
+		
 		$.getJSON('http://jqmes.com/healthkick/daily_questions.php', function(data) {
 		questions_loaded = true;
 		$('.modal-downloading, .dim').hide();
 		  $.each(data, function(questionKey, questionData) {
 		  	var question = '<p class="questionnaire_question">'+questionData['question']+'</p>';
-		  	storeAnswers[(questionKey+1)] = questionData['correct_answer'];
+		  	storeAnswers[questionKey] = questionData['correct_answer'];
 		  	 $.each(questionData['answers'], function(answerKey, answerData) {
 		  	 	question += '<fieldset class="questionnaire_answer">';
 		  	 	question += '<label for="question_'+(questionKey+1)+'_answer_'+(answerKey+1)+'">'+(answerKey+1)+') '+answerData+'</label>';
@@ -60,8 +61,8 @@ $(document).ready(function(){
 		if(storeAnswers.length > 0){
 			var correct = 0;
 			var wrong = 0;
-			for(var i = 1; i < storeAnswers.length; i++){
-				if($('input[name="question_'+i+'"]:checked').val() == storeAnswers[i]){
+			for(var i = 0; i < storeAnswers.length; i++){
+				if($('input[name="question_'+(i+1)+'"]:checked').val() == storeAnswers[i]){
 					correct++;
 				}else{
 					wrong++;
