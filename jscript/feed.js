@@ -6,7 +6,7 @@ $(function(){
 });
 
 function processFeed(items){
-  console.log(items);
+  // console.log(items);
   var entries = [];
   var s = "";
   $.each(items, function (i, v) {
