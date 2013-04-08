@@ -50,7 +50,7 @@ $(document).ready(function(){
 		if(errors == false){
 			db.transaction(updateDatabase, updateFailed, function(){
 				$('.modal-validation-heading').text("It's cool.");
-				$('.modal-validation-text').text("We've saved your ages!");
+				$('.modal-validation-text').text("We've saved your changes!");
 				$('.modal-validation-error, .dim').show();
 			});
 			

@@ -3,6 +3,11 @@ $(function(){
   // RSS url
   var RSS = "http://www.bodybuilding.com/rss/articles/nutrition";
   parseRSS(RSS, processFeed);
+  
+  $("#feed_list").on("click", "a", function(e){
+  		e.preventDefault();
+  		window.open($(this).attr("href"), "_system");
+  });
 });
 
 function processFeed(items){
@@ -10,7 +15,7 @@ function processFeed(items){
   var entries = [];
   var s = "";
   $.each(items, function (i, v) {
-    s += '<li><a href="' + v.link + '" data-entryid="' + i + '"><h3>' + v.title + '</h3><p>' + v.contentSnippet + '</p></a></li>';
+    s += '<li><h3><a href="' + v.link + '" data-entryid="' + i + '" target=>' + v.title + '</a></h3><p><a href="' + v.link + '" data-entryid="' + i + '">' + v.title + '</a>' + v.contentSnippet + '</a></p></li>';
   });
   //now draw the list
 

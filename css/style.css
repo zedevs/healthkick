@@ -378,9 +378,10 @@ ul.social_feed li a {
 form fieldset.questionnaire_answer label {
 	display:block;
 	float: left;
-	padding:8px 10px 8px 20px;
+	padding:8px 5px 8px 20px;
 	box-sizing: border-box;
 	float: left;
+	font-weight: normal;
 }
 
 form fieldset.questionnaire_answer input[type="radio"] {
