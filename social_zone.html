@@ -18,56 +18,7 @@
         </header>
         <section id="content">
         	<ul class="social_feed">
-        	    <li>
-        	    	<a href="#">
-                        <img src="images/james.jpg">
-                        <h3>James Addison</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-        	    <li>
-        	    	<a href="#">
-                        <img src="images/georgia.jpg">
-                        <h3>Georgia Angus</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-                <li>
-        	    	<a href="#">
-                        <img src="images/james.jpg">
-                        <h3>James Addison</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-        	    <li>
-        	    	<a href="#">
-                        <img src="images/georgia.jpg">
-                        <h3>Georgia Angus</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-                <li>
-        	    	<a href="#">
-                        <img src="images/james.jpg">
-                        <h3>James Addison</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-        	    <li>
-        	    	<a href="#">
-                        <img src="images/georgia.jpg">
-                        <h3>Georgia Angus</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-        	    <li>
-        	    	<a href="#">
-                        <img src="images/james.jpg">
-                        <h3>James Addison</h3>
-                        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        	        </a>
-        	    </li>
-                <ul>
+        	</ul>
         </section>
         <footer>
             <nav>
@@ -97,26 +48,27 @@
         </div>
         
         <div class="modal-box hide modal-create-post">
-            <h2>Post to Facebook <span class="icon icon-cancel-2 modal-remove"></span></h2>
+            <h2>Post to Twitter <span class="icon icon-cancel-2 modal-remove"></span></h2>
             <form>
                 <fieldset>
-                    <textarea></textarea>
+                    <textarea maxlength="140"></textarea>
                     <button type="button">Post</button>
                 </fieldset>
             </form>
         </div>
-        
-        <!--
-         Things to write
-         
-         1) Check if the user is connected to the internet - If not pop up a modal box with a refresh icon until they connect
-         2) Check if the user has previously signed into Facebook.
-         3) If they haven't signed in show them the sign in window.
-         4) Once they are signed in, show them the feed
-         5) Setup user posts
-         
-         
-         -->
+        <script>
+        $(document).ready(function(){
+	        $.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick",function(tweets){
+	                for(var i=0; i < tweets.results.length; i++){
+	                    $('.social_feed').prepend('<li>' +
+	                       '<img src="'+tweets.results[i].profile_image_url+'">' +
+	                       '<h3>'+tweets.results[i].from_user_name+'</h3>' +
+	                       '<p>'+tweets.results[i].text+'</p>' +
+	                       '</li>');
+	                }
+	        });        
+        });       
+        </script>           
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>
