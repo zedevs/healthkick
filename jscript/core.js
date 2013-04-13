@@ -35,3 +35,12 @@ $(document).ready(function() {
 	    });
 	});
 });
+
+/* Query additional information for the row you're already querying */
+function queryAchievementRecords(sql, row, callBack){
+   db.transaction(function (tx) {
+      tx.executeSql(sql, [], function(tx, result){
+         callBack(result, row);
+      });
+   });
+} 

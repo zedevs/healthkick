@@ -1,4 +1,32 @@
-$(function(){
+$(document).ready(function(){
+
+	document.addEventListener("deviceready", onReadyFeed, false);
+	
+	/* RUN SCRIPTS WHEN READY */
+	function onReadyFeed() {
+		if(checkConnection() == false){
+			$('.modal-internet-error, .dim').show();
+		}
+	    
+		$('.retry-internet-connection').click(function(){
+			if(checkConnection() == true){
+				$('.modal-internet-error, .dim').hide();
+				parseRSS(RSS, processFeed);
+				$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
+			}
+		});
+	}
+	
+	/* LISTEN FOR CONNECTION DROP */
+	document.addEventListener("offline", function() { 
+		$('.modal-box').hide(); $('.modal-internet-error, .dim').show();		
+	}, false);
+	
+	/* LISTEN FOR RE-CONNECTION */
+	document.addEventListener("online", function() {
+		parseRSS(RSS, processFeed); 
+		$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
+	}, false);	
 
   // RSS url
   var RSS = "http://www.bodybuilding.com/rss/articles/nutrition";
@@ -8,6 +36,16 @@ $(function(){
   		e.preventDefault();
   		window.open($(this).attr("href"), "_system");
   });
+  
+  $('.reload-feed').click(function(){
+  	 $("#feed_list").fadeOut('fast', function(){
+  	 	 $("#feed_list").html('').show();
+  	 	 $('.modal-downloading, .dim').show();
+  	 	 parseRSS(RSS, processFeed);
+  	 });	
+  });
+  
+  
 });
 
 function processFeed(items){
@@ -15,7 +53,9 @@ function processFeed(items){
   var entries = [];
   var s = "";
   $.each(items, function (i, v) {
-    s += '<li><h3><a href="' + v.link + '" data-entryid="' + i + '" target=>' + v.title + '</a></h3><p><a href="' + v.link + '" data-entryid="' + i + '">' + v.title + '</a>' + v.contentSnippet + '</a></p></li>';
+  	if(v.title && v.contentSnippet && v.link){
+	    s += '<li><h3><a href="' + v.link + '" data-entryid="' + i + '" target=>' + v.title + '</a></h3><p><a href="' + v.link + '" data-entryid="' + i + '">' + v.title + '</a>' + v.contentSnippet + '</a></p></li>';
+    }
   });
   //now draw the list
 
@@ -29,6 +69,7 @@ function parseRSS(url, callback) {
     dataType: 'json',
     success: function(data) {
       callback(data.responseData.feed.entries);
+      $('.modal-downloading, .dim').hide();
     }
   });
 }

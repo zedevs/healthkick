@@ -7,35 +7,31 @@
         <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="css/icons.css" media="screen, projection">
-        <title>Dashboard</title>
+        <title>Update Achievement</title>
     </head>
     <body>
         <header>
-            <h1>Dashboard</h1>
+            <h1>Update Achievement</h1>
         </header>
         <section id="content">
-
-            <ul class="timescale_selector">
-                <li><a href="#">Today</a></li>
-                <li><a href="#">This Week</a></li>
-                <li><a href="#">This Month</a></li>
-            </ul>
+        	<form>
+                <fieldset>
+                    <label>Latest Reading</label>
+                    <input type="number" pattern="[0-9]*" min="0">
+                    <input type="submit" value="Update Achievement!">
+                </fieldset>
+            </form>
             
-            <div class="dashboard_stats">
-            
-			</div>
-			<a class="button red" href="questionnaire.html">Complete The Daily 1 Minute Quiz!</a>
-			
         </section>
         <footer>
             <nav>
                 <ul>
-                    <li class="achievements"><a href="achievements.html"><span class="icon icon-heart"></span>Gains</a></li>
-                    <li class="feed"><a href="feed.html"><span class="icon icon-inbox"></span>Feed</a></li>
-                    <li class="dashboard"><a href="dashboard.html"><span class="icon icon-chart-2"></span>Dashboard</a></li>
-                    <li class="socialzone"><a href="social_zone.html"><span class="icon icon-comments"></span>Social</a></li>
+                    <li class="achievements"><a href="achievements.html"><span aria-hidden="true" class="icon icon-heart"></span>Gains</a></li>
+                    <li class="feed"><a href="feed.html"><span aria-hidden="true" class="icon icon-inbox"></span>Feed</a></li>
+                    <li class="dashboard"><a href="dashboard.html"><span aria-hidden="true" class="icon icon-chart-2"></span>Dashboard</a></li>
+                    <li class="socialzone"><a href="social_zone.html"><span aria-hidden="true" class="icon icon-comments"></span>Social</a></li>
                     <li class="settings">
-                    <a href="settings.html"><span class="icon icon-cog"></span>Settings</a>
+                    <a href="settings.html"><span aria-hidden="true" class="icon icon-cog"></span>Settings</a>
                     </li>
                 </ul>
             </nav>
@@ -43,7 +39,6 @@
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
-        <script type="text/javascript" src="jscript/dashboard.js"></script>
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>

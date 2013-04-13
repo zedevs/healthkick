@@ -2,6 +2,7 @@ $(document).ready(function(){
 	db.transaction(function(tx) {
 		tx.executeSql('SELECT * FROM `settings` WHERE `ID` = "NAME"', [], function(tx, results) {
 			$('#login_name').text(results.rows.item(0).string);
+			$('#login_form').fadeIn('slow');
 		});
 	});
 	

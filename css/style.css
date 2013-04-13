@@ -250,7 +250,7 @@ ul.timescale_selector li:last-child {
     width: 34%;
 }
 
-.percentage_label.first {
+.dashboard_stats {
     margin: 10px 0 0 0;
 }
 
@@ -311,15 +311,23 @@ ul.achievement_list {
 	padding: 0;
 }
 ul.achievement_list li:nth-child(odd) {
-	background: #22366b url(../images/achievements.png) center left no-repeat;
-	padding-left:30px;
+	background: #22366b;
 }
 
 ul.achievement_list li:nth-child(even) {
-	background: #0e62a1 url(../images/achievements.png) center left no-repeat;
-	padding-left:30px;
+	background: #0e62a1;
 }
 
+ul.achievement_list li h3 {
+	border-bottom: 1px solid #69bfea;
+	display: block;
+}
+ul.achievement_list li h3 span {
+	text-transform: uppercase;
+	float: right;
+	font-size: 11px;
+	padding: 3px;
+}
 ul.achievement_list li h3, ul.achievement_list li p {
 	margin: 0;
 	padding: 5px;
@@ -330,6 +338,19 @@ ul.achievement_list li a {
 	color: #fff;
 	text-decoration: none;
 }
+
+ul.achievement_list li a p.info {
+	text-transform: uppercase;
+}
+
+ul.achievement_list li a span.target {
+	float: left;
+}
+
+ul.achievement_list li a span.submission {
+	float: right;
+}
+
 
 /* SOCIAL ZONE */
 
@@ -382,6 +403,7 @@ form fieldset.questionnaire_answer label {
 	box-sizing: border-box;
 	float: left;
 	font-weight: normal;
+	width: 90%;
 }
 
 form fieldset.questionnaire_answer input[type="radio"] {

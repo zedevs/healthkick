@@ -10,7 +10,7 @@
         <title>Social Zone</title>
     </head>
     <body>
-        <header data-position="fixed">
+        <header>
             <h1>Social Zone</h1>
             <ul class="header_navigation">
                 <li><span class="icon icon-pencil button-create-post"></span></li>
@@ -55,20 +55,7 @@
                     <button type="button">Post</button>
                 </fieldset>
             </form>
-        </div>
-        <script>
-        $(document).ready(function(){
-	        $.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick",function(tweets){
-	                for(var i=0; i < tweets.results.length; i++){
-	                    $('.social_feed').prepend('<li>' +
-	                       '<img src="'+tweets.results[i].profile_image_url+'">' +
-	                       '<h3>'+tweets.results[i].from_user_name+'</h3>' +
-	                       '<p>'+tweets.results[i].text+'</p>' +
-	                       '</li>');
-	                }
-	        });        
-        });       
-        </script>           
+        </div>        
         <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>

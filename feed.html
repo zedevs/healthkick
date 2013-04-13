@@ -14,7 +14,7 @@
     <header>
       <h1>Health Feed</h1>
       <ul class="header_navigation">
-        <li><span class="icon icon-rotate"></span></li>
+        <li><span class="icon icon-rotate reload-feed"></span></li>
       </ul>
     </header>
     <section id="content">
@@ -34,6 +34,21 @@
         </ul>
       </nav>
     </footer>
+    
+    <div class="dim"></div>
+    <div class="modal-box modal-downloading">
+        <h2>We won't be long..</h2>
+        <p>We're quickly downloading the daily feed to your device.</p>
+    </div>
+    
+    <div class="modal-box hide modal-internet-error">
+        <h2>You're not connected to the Internet.</h2>
+        <p>Hook your device up to either Wifi or 3G to access the health feed.</p>
+        <div class="button_container">
+        	<a class="button lightblue retry-internet-connection">Retry</a>
+        </div>
+    </div>
+    
     <script type="text/javascript" src="jscript/jquery.js"></script>
     <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
     <script type="text/javascript" src="jscript/core.js"></script>
