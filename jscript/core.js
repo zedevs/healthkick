@@ -36,7 +36,7 @@ $(document).ready(function() {
 	});
 });
 
-/* Query additional information for the row you're already querying */
+/* QUERY ADDITIONAL INFORMATION FOR THE ROW YOU'RE ALREADY QUERYING */
 function queryAchievementRecords(sql, row, callBack){
    db.transaction(function (tx) {
       tx.executeSql(sql, [], function(tx, result){
@@ -44,3 +44,8 @@ function queryAchievementRecords(sql, row, callBack){
       });
    });
 } 
+
+/* ESCAPE QUOTE ON DATABASE */
+function escape(str) {
+	return str.replace('/"/g', '\"');
+}

@@ -15,12 +15,12 @@ $(document).ready(function(){
 			errors = true;	
 		}
 		
-		if(($('#create_achievement_target').val() == "" || isNaN($('#create_achievement_target').val())) && errors == false){
-			error = 'You must enter a target.';
+		if(($('#create_achievement_target').val() == "" || isNaN($('#create_achievement_target').val()) || $('#create_achievement_target').val() < 1) && errors == false){
+			error = 'You must enter a target which is greater than 0.';
 			errors = true;	
 		}
-		if(($('#create_achievement_current_reading').val() == "" || isNaN($('#create_achievement_current_reading').val())) && errors == false){
-			error = 'You must enter a valid current reading.';
+		if(($('#create_achievement_current_reading').val() == "" || isNaN($('#create_achievement_current_reading').val()) || $('#create_achievement_current_reading').val() < 1) && errors == false){
+			error = 'You must enter a valid current reading which is greater than 0.';
 			errors = true;	
 		}
 		
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	});
 	
 	function updateDatabase(trans){
-		trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "'+$('#create_achievement_name').val()+'", "'+$('#create_achievement_measurement').val()+'", "'+$('#create_achievement_target').val()+'", "'+$('#create_achievement_current_reading').val()+'")');
+		trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "'+escape($('#create_achievement_name').val())+'", "'+escape($('#create_achievement_measurement').val())+'", '+$('#create_achievement_target').val()+', '+$('#create_achievement_current_reading').val()+')');
 	}
 	
 	function updateFailed(err) {

@@ -63,12 +63,12 @@ $(document).ready(function(){
 	});
 	
 	function updateDatabase(trans){
-		trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_name').val()+'" WHERE `ID` = "NAME"');
+		trans.executeSql('UPDATE `settings` SET `string` = "'+escape($('#settings_name').val())+'" WHERE `ID` = "NAME"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_age').val()+'" WHERE `ID` = "AGE"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_height').val()+'" WHERE `ID` = "HEIGHT"');
-		trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_gender').val()+'" WHERE `ID` = "GENDER"');
+		trans.executeSql('UPDATE `settings` SET `string` = "'+escape($('#settings_gender').val())+'" WHERE `ID` = "GENDER"');
 		if($('#settings_passcode').val() != ""){
-			trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_passcode').val()+'" WHERE `ID` = "PASSCODE"');
+			trans.executeSql('UPDATE `settings` SET `string` = "'+escape($('#settings_passcode').val())+'" WHERE `ID` = "PASSCODE"');
 		}	
 	}
 	
