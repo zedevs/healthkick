@@ -2,10 +2,6 @@
 $(document).ready(function(){
 	var questions_loaded = false;
 	var storeAnswers = new Array();
-	
-	if(checkConnection() == false){
-		$('.modal-internet-error, .dim').show();
-	}
 	    
 	$('.retry-internet-connection').click(function(){
 		if(checkConnection() == true){
