@@ -1,5 +1,6 @@
 var db;
 $(document).ready(function() {
+	
 	/* ONLY ALLOW SCROLLING ON THE CONTENT AREA */
 	$(document).on('touchmove', function(e) {
 	    if (!$(e.target).parents('#content').length) {
@@ -7,16 +8,21 @@ $(document).ready(function() {
 	    }
 	});
 	
-	/* RUN SCRIPTS WHEN READY */
-	function onDeviceReady() {
-		var appConfigured = window.localStorage.getItem("appConfigured");
-		var current_location = window.location.toString();
-		if(appConfigured == null && current_location.substr(-17) != "first_launch.html"){
-			window.location = "first_launch.html";	
-		}
-		db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
+	/* MODAL-BOX HANDLER */
+	$(document).ready(function(){
+	    $('.modal-remove').click(function(){
+			$(this).parents('.modal-box').hide();
+			$('.dim').hide();
+	    });
+	});
+	
+	var appConfigured = window.localStorage.getItem("appConfigured");
+	var current_location = window.location.toString();
+	if(appConfigured == null && current_location.substr(-17) != "first_launch.html"){
+		window.location = "first_launch.html";	
 	}
-	onDeviceReady();
+	db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
+	
 	
 	/* CHECK IF THE APP HAS CONNECTIVITY */
 	function checkConnection() {
@@ -26,14 +32,6 @@ $(document).ready(function() {
 		}
 		return false;
 	}
-	
-	/* MODAL-BOX HANDLER */
-	$(document).ready(function(){
-	    $('.modal-remove').click(function(){
-			$(this).parents('.modal-box').hide();
-			$('.dim').hide();
-	    });
-	});
 });
 
 /* QUERY ADDITIONAL INFORMATION FOR THE ROW YOU'RE ALREADY QUERYING */
