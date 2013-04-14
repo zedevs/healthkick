@@ -1,21 +1,12 @@
 $(document).ready(function(){
 
-	document.addEventListener("deviceready", onReadyFeed, false);
-	
-	/* RUN SCRIPTS WHEN READY */
-	function onReadyFeed() {
-		if(checkConnection() == false){
-			$('.modal-internet-error, .dim').show();
+	$('.retry-internet-connection').click(function(){
+		if(checkConnection() == true){
+			$('.modal-internet-error, .dim').hide();
+			loadQuestions();
+			$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
 		}
-	    
-		$('.retry-internet-connection').click(function(){
-			if(checkConnection() == true){
-				$('.modal-internet-error, .dim').hide();
-				parseRSS(RSS, processFeed);
-				$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
-			}
-		});
-	}
+	});
 	
 	/* LISTEN FOR CONNECTION DROP */
 	document.addEventListener("offline", function() { 

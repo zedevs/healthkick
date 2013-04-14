@@ -3,22 +3,17 @@ $(document).ready(function(){
 	var questions_loaded = false;
 	var storeAnswers = new Array();
 	
-	document.addEventListener("deviceready", onReadySocialZone, false);
-	
-	/* RUN SCRIPTS WHEN READY */
-	function onReadySocialZone() {
-		if(checkConnection() == false){
-			$('.modal-internet-error, .dim').show();
-		}
-	    
-		$('.retry-internet-connection').click(function(){
-			if(checkConnection() == true){
-				$('.modal-internet-error, .dim').hide();
-				loadQuestions();
-				$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
-			}
-		});
+	if(checkConnection() == false){
+		$('.modal-internet-error, .dim').show();
 	}
+	    
+	$('.retry-internet-connection').click(function(){
+		if(checkConnection() == true){
+			$('.modal-internet-error, .dim').hide();
+			loadQuestions();
+			$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
+		}
+	});
 	
 	/* LISTEN FOR CONNECTION DROP */
 	document.addEventListener("offline", function() { 

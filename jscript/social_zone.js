@@ -1,19 +1,13 @@
 /* CREATE POST HANDLER */
 $(document).ready(function(){
-	document.addEventListener("deviceready", onReadySocialZone, false);
-	
-	/* RUN SCRIPTS WHEN READY */
-	function onReadySocialZone() {
-		if(checkConnection() == false){
-			$('.modal-internet-error, .dim').show();
+		
+	$('.retry-internet-connection').click(function(){
+		if(checkConnection() == true){
+			$('.modal-internet-error, .dim').hide();
+			loadQuestions();
+			$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
 		}
-	    
-		$('.retry-internet-connection').click(function(){
-			if(checkConnection() == true){
-				$('.modal-internet-error, .dim').hide();
-			}
-		});
-	}
+	});
 	
 	/* LISTEN FOR CONNECTION DROP */
 	document.addEventListener("offline", function() { $('.modal-box').hide(); $('.modal-internet-error, .dim').show(); }, false);
