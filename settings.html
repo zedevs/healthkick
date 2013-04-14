@@ -17,16 +17,21 @@
         	<form id="settings_form">
                 <fieldset>
                     <label for="settings_name">Name</label>
-                    <input type="text" id="settings_name">
+                    <input type="text" id="settings_name" maxlength="255">
                     <label for="settings_age">Age</label>
-                    <input type="number" pattern="[0-9]*" id="settings_age">
+                    <input type="number" pattern="[0-9]*" id="settings_age" maxlength="255">
                     <label for="settings_height">Height(CM)</label>
-                    <input type="number" pattern="[0-9]*" id="settings_height">
+                    <input type="number" pattern="[0-9]*" id="settings_height" maxlength="255">
                     <label for="settings_gender">Gender</label>
                     <select id="settings_gender">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
+                    <label for="settings_passcode">Update Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="settings_passcode" maxlength="4">
+                    <label for="settings_retype_passcode">Re-Type Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="settings_retype_passcode" maxlength="4">
+                    <p class="form-helper">It's cool if you don't want to update your passcode, just leave it blank.</p>
                     <input type="submit" value="Save">
                 </fieldset>
             </form>

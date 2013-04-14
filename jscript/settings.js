@@ -35,8 +35,8 @@ $(document).ready(function(){
 			errors = true;	
 		}
 		
-		/*
-		if(($('#settings_passcode').val() == "" || isNaN($('#settings_passcode').val())) && errors == false){
+		
+		if($('#settings_passcode').val() != "" && (isNaN($('#settings_passcode').val()) || $('#settings_passcode').val().length != 4) && errors == false){
 			error = 'You must enter a 4 digit passcode.';	
 			errors = true;
 		}
@@ -45,7 +45,6 @@ $(document).ready(function(){
 			error = 'You must enter an identical password twice.';
 			errors = true;	
 		}
-		*/
 		
 		if(errors == false){
 			db.transaction(updateDatabase, updateFailed, function(){
@@ -67,7 +66,10 @@ $(document).ready(function(){
 		trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_name').val()+'" WHERE `ID` = "NAME"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_age').val()+'" WHERE `ID` = "AGE"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_height').val()+'" WHERE `ID` = "HEIGHT"');
-		trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_gender').val()+'" WHERE `ID` = "GENDER"');	
+		trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_gender').val()+'" WHERE `ID` = "GENDER"');
+		if($('#settings_passcode').val() != ""){
+			trans.executeSql('UPDATE `settings` SET `string` = "'+$('#settings_passcode').val()+'" WHERE `ID` = "PASSCODE"');
+		}	
 	}
 	
 	function updateFailed(err) {

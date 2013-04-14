@@ -4,7 +4,7 @@ $(document).ready(function(){
 			for(var i = 0; i < results.rows.length; i++){
 				var percentage = 0;
 				var last_submission;
-				queryAchievementRecords('SELECT * FROM `achievements_records` WHERE `achievement_id` = '+results.rows.item(i).ID+' LIMIT 1', results.rows.item(i), function(records, row){
+				queryAchievementRecords('SELECT * FROM `achievements_records` WHERE `achievement_id` = '+results.rows.item(i).ID+' ORDER BY `ID` DESC LIMIT 1', results.rows.item(i), function(records, row){
 				if(records.rows.length == 0){
 					last_submission = row.initial_reading;
 				}else{					

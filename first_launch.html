@@ -18,11 +18,11 @@
         	<form id="first_launch_form">
                 <fieldset>
                     <label for="first_launch_name">Name</label>
-                    <input type="text" id="first_launch_name">
+                    <input type="text" id="first_launch_name" maxlength="255">
                     <label for="first_launch_age">Age</label>
-                    <input type="number" pattern="[0-9]*" id="first_launch_age">
+                    <input type="number" pattern="[0-9]*" id="first_launch_age" maxlength="255">
                     <label for="first_launch_height">Height(CM)</label>
-                    <input type="number" pattern="[0-9]*" id="first_launch_height">
+                    <input type="number" pattern="[0-9]*" id="first_launch_height" maxlength="255">
                     <p class="form-helper">Still growing? Not a problem you can update this later!</p>
                     <label for="first_launch_gender">Gender</label>
                     <select id="first_launch_gender">
@@ -30,9 +30,9 @@
                         <option>Female</option>
                     </select>
                     <label for="first_launch_passcode">Passcode</label>
-                    <input type="password" pattern="[0-9]*" id="first_launch_passcode">
+                    <input type="password" pattern="[0-9]*" maxlength="4" id="first_launch_passcode">
                     <label for="first_launch_retype_passcode">Re-type Passcode</label>
-                    <input type="password" pattern="[0-9]*" id="first_launch_retype_passcode">
+                    <input type="password" pattern="[0-9]*" maxlength="4" id="first_launch_retype_passcode">
                     <input type="submit" value="Done!">
                 </fieldset>
             </form>

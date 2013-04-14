@@ -49,7 +49,7 @@ $('#first_launch_form').submit(function(e){
 function installDatabase(trans){
 	
 	/* SETTINGS */
-	trans.executeSql('CREATE TABLE IF NOT EXISTS `settings` (`ID` varchar(255) NOT NULL, `string` varchar(255) NULL, `integer` int(255) NULL, PRIMARY KEY (`ID`))');
+	trans.executeSql('CREATE TABLE IF NOT EXISTS `settings` (`ID` varchar(255) PRIMARY KEY NOT NULL, `string` varchar(255) NULL, `integer` int(255) NULL)');
 	trans.executeSql('DELETE FROM `settings`');
 	trans.executeSql('INSERT INTO `settings` (`ID`, `string`, `integer`) VALUES ("NAME", "'+$('#first_launch_name').val()+'", NULL)');
 	trans.executeSql('INSERT INTO `settings` (`ID`, `string`, `integer`) VALUES ("AGE", NULL, '+parseInt($('#first_launch_age').val())+')');
@@ -58,14 +58,14 @@ function installDatabase(trans){
 	trans.executeSql('INSERT INTO `settings` (`ID`, `string`, `integer`) VALUES ("PASSCODE", "'+$('#first_launch_passcode').val()+'", NULL)');
 
 	/* ACHIEVEMENTS */	
-	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements` (`ID` int(255) NOT NULL, `name` varchar(255) NULL, `measurement` varchar(255) NULL, `target` int(255) NULL, `initial_reading` int(255) NULL, PRIMARY KEY (`ID`))');
+	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `name` varchar(255) NULL, `measurement` varchar(255) NULL, `target` int(255) NULL, `initial_reading` int(255) NULL)');
 	trans.executeSql('DELETE FROM `achievements`');
 	
-	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (1, "Lose Weight", "KG", "100", "75")');
-	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (2, "Gun Size", "CM", "70", "40")');
+	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "Lose Weight", "KG", "100", "75")');
+	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "Gun Size", "CM", "70", "40")');
 	
 	/* ACHIEVEMENTS RECORDS */
-	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements_records` (`ID` varchar(255) NOT NULL, `achievement_id` int(255) NULL, `reading` int(255) NULL, PRIMARY KEY (`ID`))');
+	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements_records` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `achievement_id` int(255) NULL, `reading` int(255) NULL)');
 	trans.executeSql('DELETE FROM `achievements_records`');
 	
 }
