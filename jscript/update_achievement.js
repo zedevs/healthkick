@@ -12,9 +12,7 @@ $(document).ready(function(){
 				
 		if(errors == false){
 			db.transaction(updateDatabase, updateFailed, function(){
-				$('.modal-validation-heading').text("All Done.");
-				$('.modal-validation-text').text("We've added your latest achievement!");
-				$('.modal-validation-error, .dim').show();
+				$('.modal-validation-ok, .dim').show();
 			});
 			
 		}else{
@@ -27,7 +25,7 @@ $(document).ready(function(){
 	});
 	
 	function updateDatabase(trans){
-		trans.executeSql('INSERT INTO `achievements_records` (`ID`, `achievement_id`, `reading`, `time`) VALUES (NULL, '+window.localStorage.getItem("achievment_id")+', '+$('#update_achievement_reading').val()+', '+Date.now()+')');
+		trans.executeSql('INSERT INTO `achievements_records` (`ID`, `achievement_id`, `reading`, `time`) VALUES (NULL, '+window.localStorage.getItem("achievment_id")+', '+$('#update_achievement_reading').val()+', '+parseInt(Date.now())+')');
 	}
 	
 	function updateFailed(err) {

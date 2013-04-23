@@ -24,13 +24,16 @@ $(document).ready(function(){
 			errors = true;	
 		}
 		
+		if(($('#create_achievement_current_reading').val() == $('#create_achievement_target').val()) && errors == false){
+			error = 'Your target cannot be equal to your current reading.';
+			errors = true;	
+		}
+		
 		
 				
 		if(errors == false){
 			db.transaction(updateDatabase, updateFailed, function(){
-				$('.modal-validation-heading').text("All Done.");
-				$('.modal-validation-text').text("We've added your achievement, good luck!");
-				$('.modal-validation-error, .dim').show();
+				$('.modal-validation-ok, .dim').show();
 			});
 			
 		}else{

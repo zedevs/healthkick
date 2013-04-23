@@ -241,7 +241,7 @@ ul.timescale_selector li a {
     height: 100%;
 }
 
-ul.timescale_selector li:first-child {
+ul.timescale_selector li.selected {
     border-bottom: 3px solid #69bfea;
 }
 
