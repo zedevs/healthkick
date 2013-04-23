@@ -1,5 +1,16 @@
 /* CREATE POST HANDLER */
 $(document).ready(function(){
+
+	var config 	= {
+					consumerKey: 		'sPs42tdK9cUPENxoa5j4sw',
+					consumerSecret: 	'Um1UYzaz0l2dRgROsY0XVBox49QO2MFNwOe99QwucNg',
+					callbackUrl: 		'http://homepages.cs.ncl.ac.uk/2012-13/Csc2015Team1/',
+					authorizationUrl: 	'https://api.twitter.com/oauth/authorize',
+					accessTokenUrl: 	'https://api.twitter.com/oauth/access_token',
+					requestTokenUrl: 	'https://api.twitter.com/oauth/request_token'
+	}
+	var oauth = OAuth(config);
+	var childbrowser;
 		
 	$('.retry-internet-connection').click(function(){
 		if(checkConnection() == true){
@@ -48,7 +59,11 @@ $(document).ready(function(){
     /* LISTEN FOR RE-CONNECTION */
     document.addEventListener("online", function () {
     	loadTweets();
-        $('.modal-internet-error, .dim').hide();
+    	$('.modal-internet-error, .dim').hide();
+    	if (window.localStorage.getItem("oauth_token") == null || window.localStorage.getItem("oauth_token_secret") == null) {
+	    	childbrowser = window.plugins.childBrowser;        
+	    	twitterAuth();
+    	}
     }, false);
 
     $('.button-create-post').click(function () {
@@ -60,24 +75,12 @@ $(document).ready(function(){
     	tweet();
     });
     
-   
-    var oauth;
-    var config 	= {
-    				consumerKey: 		'sPs42tdK9cUPENxoa5j4sw',
-    				consumerSecret: 	'Um1UYzaz0l2dRgROsY0XVBox49QO2MFNwOe99QwucNg',
-    				callbackUrl: 		'http://homepages.cs.ncl.ac.uk/2012-13/Csc2015Team1/',
-    				authorizationUrl: 	'https://api.twitter.com/oauth/authorize',
-    				accessTokenUrl: 	'https://api.twitter.com/oauth/access_token',
-    				requestTokenUrl: 	'https://api.twitter.com/oauth/request_token'
-    }
-    var childbrowser;
-    var temp;
-    
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        childbrowser = window.plugins.childBrowser;        
+    $('.modal-twitter-fail').click(function () {
+    	window.localStorage.removeItem("oauth_token");
+    	window.localStorage.removeItem("oauth_token_secret");
+    	$('.modal-twitter-fail, .dim').hide();
     	twitterAuth();
-    }
+    });
     
     function loadTweets(){
     	$('.social_feed').html('');
@@ -91,64 +94,65 @@ $(document).ready(function(){
             }
         });
     }
-    loadTweets();
     
     function twitterAuth() {
-    	oauth = OAuth(config);
-		
-		console.log("Key: " + oauth.getAccessTokenKey());
-		console.log("Secret: " + oauth.getAccessTokenSecret());
-		if (!oauth.getAccessTokenKey() || !oauth.getAccessTokenSecret()) {
+		$('.modal-twitter-connecting, .dim').show();
+		if (window.localStorage.getItem("oauth_token") == null || window.localStorage.getItem("oauth_token_secret") == null) {
 			oauth.fetchRequestToken(function (url) {
 				childbrowser.showWebPage(url);
 				 childbrowser.onLocationChange = function (url) {
 					if (url.indexOf('http://homepages.cs.ncl.ac.uk/2012-13/Csc2015Team1/?') >= 0) {
-						var index, code = '';
-					    var params = url.substr(url.indexOf('?') + 1);
-						params = params.split('&');
-					    for (var i = 0; i < params.length; i++) {
-					    	var y = params[i].split('=');
-					    	if (y[0] === 'oauth_verifier') {
-					    		code = y[1];
-					    	}
-					    }
-						oauth.setVerifier(code);
+						oauth.setVerifier(getURLParm(url, 'oauth_verifier'));
 						oauth.fetchAccessToken(function (data) {
-							var authData = {};
-							var qvars_tmp = data.text.split('&');
-							for (var i = 0; i < qvars_tmp.length; i++) {
-							    var y = qvars_tmp[i].split('=');
-							    authData[y[0]] = decodeURIComponent(y[1]);
-							}
-							oauth.setAccessToken([authData.oauth_token, authData.oauth_token_secret]);
+							window.localStorage.setItem("oauth_token", getURLParm(data.text, 'oauth_token'));
+							window.localStorage.setItem("oauth_token_secret", getURLParm(data.text, 'oauth_token_secret'));
+							oauth.setAccessToken(authData.oauth_token, authData.oauth_token_secret);
 							window.plugins.childBrowser.close();
+							$('.modal-twitter-connecting, .dim').hide();
 						}, function (data) {
-							// Error
+							$('.modal-twitter-connecting, .dim').hide();
+							$('.modal-twitter-fail, .dim').show();
 						});
 						
 					}else{
-					 // Error
+						$('.modal-twitter-connecting, .dim').hide();
+						$('.modal-twitter-fail, .dim').show();
 					}
 				}
 			}, function (data) {
-				// Error
+				$('.modal-twitter-connecting, .dim').hide();
+				$('.modal-twitter-fail, .dim').show();
 			});
+		}else{
+			$('.modal-twitter-connecting, .dim').hide();
+			oauth.setAccessToken(window.localStorage.getItem("oauth_token"), window.localStorage.getItem("oauth_token_secret"));
 		}
 		    	
     }
     
-    
-    function tweet() {
-           
+    function tweet() {  
        oauth.post('https://api.twitter.com/1/statuses/update.json', {
-                'status': $("#tweet_msg").val(),
-                'trim_user': 'true'
+       		'status': $("#tweet_msg").val(),
+       		'trim_user': 'true'
        }, function (data) {
-       			$("#tweet_msg").val('');
-                $('.modal-create-post, .dim').hide();
+       		$("#tweet_msg").val('');
+       		$('.modal-create-post, .dim').hide();
        }, function(){
-       		// Oops something went wrong.
+       		$("#tweet_msg").val('');
+       		$('.modal-create-post, .dim').hide();
+       		$('.modal-twitter-fail, .dim').show();
        });
+    }
+    
+    function getURLParm(data, key) {
+    	splitData = data.split('&');
+    	for (var i = 0; i < splitData.length; i++) {
+    		var keyValue = splitData[i].split('=');
+    		if (keyValue[0] == key) {
+    			return keyValue[1];
+    		}
+    	}
+    	return "";
     }
         
 });
