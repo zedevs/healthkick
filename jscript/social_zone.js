@@ -99,14 +99,14 @@ $(document).ready(function(){
 		$('.modal-twitter-connecting, .dim').show();
 		if (window.localStorage.getItem("oauth_token") == null || window.localStorage.getItem("oauth_token_secret") == null) {
 			oauth.fetchRequestToken(function (url) {
-				childbrowser.showWebPage(url);
+				 childbrowser.showWebPage(url);
 				 childbrowser.onLocationChange = function (url) {
-					if (url.indexOf('http://homepages.cs.ncl.ac.uk/2012-13/Csc2015Team1/?') >= 0) {
+					if (url.indexOf(callbackUrl+'/?') >= 0) {
 						oauth.setVerifier(getURLParm(url, 'oauth_verifier'));
 						oauth.fetchAccessToken(function (data) {
 							window.localStorage.setItem("oauth_token", getURLParm(data.text, 'oauth_token'));
 							window.localStorage.setItem("oauth_token_secret", getURLParm(data.text, 'oauth_token_secret'));
-							oauth.setAccessToken(authData.oauth_token, authData.oauth_token_secret);
+							oauth.setAccessToken(getURLParm(data.text, 'oauth_token'), getURLParm(data.text, 'oauth_token_secret'));
 							window.plugins.childBrowser.close();
 							$('.modal-twitter-connecting, .dim').hide();
 						}, function (data) {
