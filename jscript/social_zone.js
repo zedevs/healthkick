@@ -88,7 +88,7 @@ $(document).ready(function(){
     
     function loadTweets(){
     	$('.social_feed').html('');
-        $.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick", function (tweets) {
+        $.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick&result_type=recent", function (tweets) {
             for (var i = 0; i < tweets.results.length; i++) {
                 $('.social_feed').prepend('<li>' +
                     '<img src="' + tweets.results[i].profile_image_url + '">' +
