@@ -1,6 +1,9 @@
 var db;
 $(document).ready(function() {
 	
+	/* DISBALE AJAX CACHE */
+	$.ajaxSetup({ cache: false });
+	
 	/* ONLY ALLOW SCROLLING ON THE CONTENT AREA */
 	$(document).on('touchmove', function(e) {
 	    if (!$(e.target).parents('#content').length) {

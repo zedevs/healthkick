@@ -29,17 +29,6 @@ $(document).ready(function(){
 	
 	$('.button-create-post').click(function(){
 		$('.modal-create-post, .dim').show();
-	});
-	
-	
-	$.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick",function(tweets){
-		for(var i=0; i < tweets.results.length; i++){
-			$('.social_feed').prepend('<li>' +
-			'<img src="'+tweets.results[i].profile_image_url+'">' +
-			'<h3>'+tweets.results[i].from_user_name+'</h3>' +
-			'<p>'+tweets.results[i].text+'</p>' +
-			'</li>');
-		}
 	});        
 
     $('.retry-internet-connection').click(function () {
@@ -90,7 +79,7 @@ $(document).ready(function(){
     	$('.social_feed').html('');
         $.getJSON("http://search.twitter.com/search.json?rpp=25&callback=?&q=%23healthkick&result_type=recent", function (tweets) {
             for (var i = 0; i < tweets.results.length; i++) {
-                $('.social_feed').prepend('<li>' +
+                $('.social_feed').append('<li>' +
                     '<img src="' + tweets.results[i].profile_image_url + '">' +
                     '<h3>' + tweets.results[i].from_user_name + '</h3>' +
                     '<p>' + tweets.results[i].text + '</p>' +
