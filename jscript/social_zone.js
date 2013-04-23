@@ -11,6 +11,7 @@ $(document).ready(function(){
 	}
 	var oauth = OAuth(config);
 	var childbrowser;
+	var childbrowserOpen = false;
 		
 	$('.retry-internet-connection').click(function(){
 		if(checkConnection() == true){
@@ -60,12 +61,15 @@ $(document).ready(function(){
     document.addEventListener("online", function () {
     	loadTweets();
     	$('.modal-internet-error, .dim').hide();
-    	if (window.localStorage.getItem("oauth_token") == null || window.localStorage.getItem("oauth_token_secret") == null) {
-	    	childbrowser = window.plugins.childBrowser;        
+    	if ((!oauth.getAccessTokenKey() || !oauth.getAccessTokenSecret()) && childbrowserOpen == false) {
+	    	childbrowser = window.plugins.childBrowser;
+	    	childbrowser.onClose = function(){
+	    		childbrowserOpen = false;
+	    	};       
 	    	twitterAuth();
     	}
     }, false);
-
+	
     $('.button-create-post').click(function () {
         $('.modal-create-post, .dim').show();
     });
@@ -100,8 +104,9 @@ $(document).ready(function(){
 		if (window.localStorage.getItem("oauth_token") == null || window.localStorage.getItem("oauth_token_secret") == null) {
 			oauth.fetchRequestToken(function (url) {
 				 childbrowser.showWebPage(url);
+				 childbrowserOpen = true;
 				 childbrowser.onLocationChange = function (url) {
-					if (url.indexOf(callbackUrl+'/?') >= 0) {
+					if (url.indexOf(config.callbackUrl+'?') >= 0) {
 						oauth.setVerifier(getURLParm(url, 'oauth_verifier'));
 						oauth.fetchAccessToken(function (data) {
 							window.localStorage.setItem("oauth_token", getURLParm(data.text, 'oauth_token'));
@@ -114,9 +119,6 @@ $(document).ready(function(){
 							$('.modal-twitter-fail, .dim').show();
 						});
 						
-					}else{
-						$('.modal-twitter-connecting, .dim').hide();
-						$('.modal-twitter-fail, .dim').show();
 					}
 				}
 			}, function (data) {
