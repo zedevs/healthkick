@@ -10,6 +10,7 @@ $(document).ready(function(){
 			$('.modal-internet-error, .dim').hide(); $('.modal-downloading, .dim').show();
 		}
 	});
+	loadQuestions();
 	
 	/* LISTEN FOR CONNECTION DROP */
 	document.addEventListener("offline", function() { 
@@ -46,7 +47,6 @@ $(document).ready(function(){
 		  $('#questionnaire_container').show();
 		});
 	}
-	loadQuestions();
 	
 	$('#questionnaire_container').submit(function(e){
 		e.preventDefault();

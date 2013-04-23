@@ -37,7 +37,8 @@
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
         <script type="text/javascript" src="jscript/social_zone.js"></script>
-        
+        <script type="text/javascript" src="jscript/ChildBrowser.js"></script>
+        <script type="text/javascript" src="jscript/jsOAuth.js"></script>
         <div class="dim hide"></div>
         <div class="modal-box hide modal-internet-error">
            <h2>You're not connected to the Internet.</h2>
@@ -49,10 +50,10 @@
         
         <div class="modal-box hide modal-create-post">
             <h2>Post to Twitter <span class="icon icon-cancel-2 modal-remove"></span></h2>
-            <form>
+            <form id="twitter_form" method="post">
                 <fieldset>
-                    <textarea maxlength="140"></textarea>
-                    <button type="button">Post</button>
+                    <textarea id="tweet_msg" maxlength="140"></textarea>
+                    <button type="submit">Post</button>
                 </fieldset>
             </form>
         </div>        
