@@ -11,13 +11,6 @@ $(document).ready(function() {
 	    }
 	});
 	
-	
-	$(document).on('focus', 'input, textarea', function() {
-	            setTimeout(function() {
-	                window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
-	            }, 0);
-	        });
-	
 	/* MODAL-BOX HANDLER */
 	$(document).ready(function(){
 	    $('.modal-remove').click(function(){
