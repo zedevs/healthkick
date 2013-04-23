@@ -61,11 +61,9 @@ function installDatabase(trans){
 	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `name` varchar(255) NULL, `measurement` varchar(255) NULL, `target` int(255) NULL, `initial_reading` int(255) NULL)');
 	trans.executeSql('DELETE FROM `achievements`');
 	
-	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "Lose Weight", "KG", "100", "75")');
-	trans.executeSql('INSERT INTO `achievements` (`ID`, `name`, `measurement`, `target`, `initial_reading`) VALUES (NULL, "Gun Size", "CM", "70", "40")');
-	
+		
 	/* ACHIEVEMENTS RECORDS */
-	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements_records` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `achievement_id` int(255) NULL, `reading` int(255) NULL)');
+	trans.executeSql('CREATE TABLE IF NOT EXISTS `achievements_records` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `achievement_id` int(255) NULL, `reading` int(255) NULL, `time` int(255) NULL)');
 	trans.executeSql('DELETE FROM `achievements_records`');
 	
 }
