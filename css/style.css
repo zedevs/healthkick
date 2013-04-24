@@ -140,6 +140,10 @@ footer nav ul li a{
     width: 100%;
 }
 
+.dashboard #content {
+	bottom: 138px;
+}
+
 #content.nofooter {
 	bottom: 0;
 }
@@ -506,6 +510,37 @@ span.modal-remove {
     text-align:center;
 }
 
+.no_achievements_warning {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 5px;
+}
+.no_achievements_warning p {
+	margin-bottom: 5px;
+}
+
+.did_you_know {
+	position: fixed;
+	bottom: 57px;
+	background: #6edf7c;
+	width: 100%;
+}
+
+.did_you_know h4 {
+	text-align: center;
+	margin: 11px;
+}
+
+.did_you_know input{
+	width: 49%;
+	float: left;
+	
+}
+
+.did_you_know input[type="submit"] {
+	margin-top: 0;
+	float:right;
+}
 .hide {
 	display: none;
 }

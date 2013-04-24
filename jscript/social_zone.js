@@ -121,18 +121,24 @@ $(document).ready(function(){
 		    	
     }
     
-    function tweet() {  
-       oauth.post('https://api.twitter.com/1/statuses/update.json', {
-       		'status': $("#tweet_msg").val(),
-       		'trim_user': 'true'
-       }, function (data) {
-       		$("#tweet_msg").val('');
-       		$('.modal-create-post, .dim').hide();
-       }, function(){
-       		$("#tweet_msg").val('');
-       		$('.modal-create-post, .dim').hide();
-       		$('.modal-twitter-fail, .dim').show();
-       });
+    function tweet() { 
+    	if($.trim($("#tweet_msg").val()) != ""){
+    		$('#twitter_form input[type="submit"]').val('Posting..').attr('disabled','disabled');
+			oauth.post('https://api.twitter.com/1/statuses/update.json', {
+				'status': $("#tweet_msg").val() + " #healthkick",
+				'trim_user': 'true'
+			}, function (data) {
+				loadTweets();
+				$("#tweet_msg").val('');
+				$('#twitter_form input[type="submit"]').val('Post').removeAttr('disabled');
+				$('.modal-create-post, .dim').hide();
+			}, function(){
+				$("#tweet_msg").val('');
+				$('#twitter_form input[type="submit"]').val('Post').removeAttr('disabled');
+				$('.modal-create-post, .dim').hide();
+				$('.modal-twitter-fail, .dim').show();
+			});
+    	}
     }
     
     function getURLParm(data, key) {

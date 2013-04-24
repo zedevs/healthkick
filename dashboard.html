@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/icons.css" media="screen, projection">
         <title>Dashboard</title>
     </head>
-    <body>
+    <body class="dashboard">
         <header>
             <h1>Dashboard</h1>
         </header>
@@ -25,8 +25,17 @@
             
 			</div>
 			<a class="button red" href="questionnaire.html">Complete The Daily 1 Minute Quiz!</a>
-			
+		
         </section>
+        <div class="did_you_know">
+        	<h4>Did you know: We can work out your BMI!</h4>
+        	<form id="bmi_form" method="post">
+        		<fieldset>
+        			<input type="text" id="bmi_weight" placeholder="Your weight in KG..">
+        			<input type="submit">
+        		</fieldset>
+        	</form>	
+        </div>
         <footer>
             <nav>
                 <ul>
@@ -40,10 +49,18 @@
                 </ul>
             </nav>
         </footer>
+        
+        <div class="dim hide"></div>
+        <div class="modal-box hide modal-bmi-result">
+            <h2>BMI Result</h2>
+            <p class="bmi-result-text"></p>
+            <div class="button_container">
+             	<a class="button lightblue modal-remove">Okay!</a>
+            </div>
+        </div>
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
         <script type="text/javascript" src="jscript/dashboard.js"></script>
-        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#healkick3428923"></script>-->
     </body>
 </html>

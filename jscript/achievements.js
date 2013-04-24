@@ -17,7 +17,8 @@ $(document).ready(function(){
 					last_submission = records.rows.item(0).reading;
 				}
 				percentage = ((last_submission-row.initial_reading)/(row.target-row.initial_reading)*100).toFixed(2);
-				
+				if(percentage > 100) { percentage = 100;}else 
+				if(percentage < 0) { percentage = 0; }
 				var achievement  = '<li>'
 								+ '<a href="#" id="achievment_'+row.ID+'">'
 								+ '<h3>'+row.name+' <span>Add submission &raquo;</span></h3>'

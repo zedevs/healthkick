@@ -11,6 +11,16 @@ $(document).ready(function() {
 	    }
 	});
 	
+	/* Fix iOS fixed bug */
+	if($('.first_launch_body').size() == 0){
+		$('input, textarea').on('focus', function(){
+		    $('header, #content, footer, .did_you_know').css('position', 'absolute');
+		});
+		$('input, textarea').on('blur', function(){
+		    $('header, #content, footer, .did_you_know').css('position', 'fixed').show();
+		});
+	}
+	
 	/* MODAL-BOX HANDLER */
 	$(document).ready(function(){
 	    $('.modal-remove').click(function(){

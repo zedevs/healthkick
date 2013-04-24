@@ -27,12 +27,20 @@ $(document).ready(function(){
 					last_submission = records.rows.item(0).reading;
 				}
 				percentage = ((last_submission-row.initial_reading)/(row.target-row.initial_reading)*100).toFixed(2);
+				
+				if(percentage > 100) { percentage = 100;}else 
+				if(percentage < 0){ percentage = 0; }
+				
 				var achievment  = '<p class="percentage_label">'+row.name+'</p>'
 								+ '<div class="percentage_bar">'
 								+ '<div style="width:'+percentage+'%">'+percentage+'%</div>'
 								+ '</div>'
 				$('.dashboard_stats').prepend(achievment);
 				});
+			}
+			
+			if(results.rows.length == 0 && $('.no_achievements_warning').size() == 0){
+				$('.timescale_selector').after('<div class="no_achievements_warning"><p>You haven\'t created any achievements yet! Don\'t worry though, it\'s pretty simple!</p><a class="button" href="create_achievement.html">Create your first achievement!</a></div>');
 			}
 		});
 	});
@@ -55,4 +63,39 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	$('#bmi_form').submit(function (e) {
+		e.preventDefault();
+		
+		if(isNaN($('#bmi_weight').val()) || $('#bmi_weight').val() == ""){
+			$('.bmi-result-text').text('You must enter a valid weight.');
+			$('.modal-bmi-result, .dim').show();
+		}else{
+		
+		
+		
+			db.transaction(function(tx) {
+				tx.executeSql('SELECT * FROM `settings` WHERE `ID` = "HEIGHT"', [], function(tx, results) {
+					var height = results.rows.item(0).integer;
+					var bmi = ($('#bmi_weight').val() / ((height/100)*(height/100))).toFixed(2);
+					
+					var bmiStatus = '';
+					if(bmi < 18.5){
+						bmiStatus = 'underweight';
+					}else if(bmi >= 18.5 && bmi <= 24.9){
+						bmiStatus = 'a healthy weight';
+					}else if(bmi >= 25 && bmi <= 29.9){
+						bmiStatus = 'overweight';
+					}else if(bmi >= 30){
+						bmiStatus = 'obese';
+					}
+					
+					$('.bmi-result-text').text("Your BMI is " + bmi + ". Therefore according to be BMI you are " + bmiStatus + ".");
+					$('.modal-bmi-result, .dim').show();
+	 			});
+			});
+		
+		}
+	});	
+		
 });
