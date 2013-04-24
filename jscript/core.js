@@ -17,7 +17,9 @@ $(document).ready(function() {
 		    $('header, #content, footer, .did_you_know').css('position', 'absolute');
 		});
 		$('input, textarea').on('blur', function(){
-		    $('header, #content, footer, .did_you_know').css('position', 'fixed').show();
+		    setTimeout(function(){
+		    	$('header, #content, footer, .did_you_know').css('position', 'fixed');
+		    }, 50);
 		});
 	}
 	
