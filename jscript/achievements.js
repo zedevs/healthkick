@@ -1,4 +1,9 @@
 $(document).ready(function(){
+	var url = window.location.toString();
+	if(getURLParm(url, 'achievement') == 'added'){
+		$('.modal-validation-ok, .dim').show();
+	}
+		
 	$(".achievement_list").on("click", "a", function(e){
 			e.preventDefault();
 			var achievment_id = parseInt($(this).attr('id').replace('achievment_', ''));

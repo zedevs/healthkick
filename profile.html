@@ -7,19 +7,34 @@
         <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="css/icons.css" media="screen, projection">
-        <title>Questionnaire</title>
+        <title>Profile</title>
     </head>
     <body>
         <header>
-            <h1>Questionnaire</h1>
+            <h1>Profile</h1>
         </header>
         <section id="content">
-        	<form id="questionnaire_container" class="hide">
-        	
-        	<fieldset class="actions">
-        		<input type="submit" value="Check!">
-        	</fieldset>
-        	</form>
+        	<form id="settings_form">
+                <fieldset>
+                    <label for="settings_name">Name</label>
+                    <input type="text" id="settings_name" maxlength="255">
+                    <label for="settings_age">Age</label>
+                    <input type="number" pattern="[0-9]*" id="settings_age" maxlength="255">
+                    <label for="settings_height">Height(CM)</label>
+                    <input type="number" pattern="[0-9]*" id="settings_height" maxlength="255">
+                    <label for="settings_gender">Gender</label>
+                    <select id="settings_gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <label for="settings_passcode">Update Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="settings_passcode" maxlength="4">
+                    <label for="settings_retype_passcode">Re-Type Passcode</label>
+                    <input type="password" pattern="[0-9]*" id="settings_retype_passcode" maxlength="4">
+                    <p class="form-helper">It's cool if you don't want to update your passcode, just leave it blank.</p>
+                    <input type="submit" value="Save">
+                </fieldset>
+            </form>
             
         </section>
         <footer>
@@ -36,32 +51,17 @@
             </nav>
         </footer>
         
-        <div class="dim"></div>
-        <div class="modal-box modal-downloading">
-            <h2>We won't be long..</h2>
-            <p>We're quickly downloading the daily questionnaire to your device.</p>
-        </div>
-        
-        <div class="modal-box hide modal-questionnaire-results">
-            <h2>Today's results</h2>
-            <p>You achieved <span id="questionnaire_percentage"></span>% in today's questionnaire!</p>
+        <div class="dim hide"></div>
+        <div class="modal-box hide modal-validation-error">
+            <h2 class="modal-validation-heading"></h2>
+            <p class="modal-validation-text"></p>
             <div class="button_container">
-            	<a class="button lightblue" href="dashboard.html">Return to the dashboard</a>
+             	<a class="button lightblue modal-remove">Okay!</a>
             </div>
         </div>
-        
-        <div class="modal-box hide modal-internet-error">
-            <h2>You're not connected to the Internet.</h2>
-            <p>Hook your device up to either Wifi or 3G to access the Social Zone.</p>
-            <div class="button_container">
-            	<a class="button lightblue retry-internet-connection">Retry</a>
-            </div>
-        </div>
-        
-        
         <script type="text/javascript" src="jscript/jquery.js"></script>
         <script type="text/javascript" src="jscript/cordova-2.4.0.js"></script>
         <script type="text/javascript" src="jscript/core.js"></script>
-        <script type="text/javascript" src="jscript/questionnaire.js"></script>
+        <script type="text/javascript" src="jscript/settings.js"></script>
     </body>
 </html>

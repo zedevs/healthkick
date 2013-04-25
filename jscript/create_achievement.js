@@ -28,12 +28,10 @@ $(document).ready(function(){
 			error = 'Your target cannot be equal to your current reading.';
 			errors = true;	
 		}
-		
-		
 				
 		if(errors == false){
 			db.transaction(updateDatabase, updateFailed, function(){
-				$('.modal-validation-ok, .dim').show();
+				window.location = "achievements.html?achievement=added";	
 			});
 			
 		}else{
@@ -41,7 +39,6 @@ $(document).ready(function(){
 			$('.modal-validation-text').text(error);
 			$('.modal-validation-error, .dim').show();
 		}
-		return false;
 	});
 	
 	function updateDatabase(trans){

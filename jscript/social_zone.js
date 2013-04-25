@@ -139,17 +139,5 @@ $(document).ready(function(){
 				$('.modal-twitter-fail, .dim').show();
 			});
     	}
-    }
-    
-    function getURLParm(data, key) {
-    	splitData = data.split('&');
-    	for (var i = 0; i < splitData.length; i++) {
-    		var keyValue = splitData[i].split('=');
-    		if (keyValue[0] == key) {
-    			return keyValue[1];
-    		}
-    	}
-    	return "";
-    }
-        
+    }    
 });

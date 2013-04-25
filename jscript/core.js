@@ -51,6 +51,8 @@ $(document).ready(function() {
 		}
 		return false;
 	}
+	
+	
 });
 
 /* QUERY ADDITIONAL INFORMATION FOR THE ROW YOU'RE ALREADY QUERYING */
@@ -65,4 +67,19 @@ function queryAchievementRecords(sql, row, callBack){
 /* ESCAPE QUOTE ON DATABASE */
 function escape(str) {
 	return str.replace('/"/g', '\"');
+}
+
+/* CHECK URL PARM */
+function getURLParm(data, key) {
+	splitUrl = data.split('?');
+	if(splitUrl.length > 1){ data = splitUrl[1];
+	}else{ data = splitUrl[0]; }
+	splitData = data.split('&');
+	for (var i = 0; i < splitData.length; i++) {
+		var keyValue = splitData[i].split('=');
+		if (keyValue[0] == key) {
+			return keyValue[1];
+		}
+	}
+	return "";
 }
