@@ -1,5 +1,11 @@
 var db;
 $(document).ready(function() {
+	var appConfigured = window.localStorage.getItem("appConfigured");
+	db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
+	/* APPLY FEMALE COLOUR SCHEME IF REQUIRED */
+	if(window.localStorage.getItem("appGender") == 'Female'){
+		$('body').addClass('female');
+	}
 	
 	/* DISBALE AJAX CACHE */
 	$.ajaxSetup({ cache: false });
@@ -29,12 +35,12 @@ $(document).ready(function() {
 	    });
 	});
 	
-	var appConfigured = window.localStorage.getItem("appConfigured");
+	
 	var current_location = window.location.toString();
 	if(appConfigured == null && current_location.substr(-17) != "first_launch.html"){
 		window.location = "first_launch.html";	
 	}
-	db = window.openDatabase("Database", "1.0", "Healthkick", 200000);
+	
 	
 	
 	/* CHECK IF THE APP HAS CONNECTIVITY */

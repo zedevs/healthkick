@@ -63,6 +63,12 @@ $(document).ready(function(){
 	});
 	
 	function updateDatabase(trans){
+		window.localStorage.setItem("appGender", $('#settings_gender').val());
+		if($('#settings_gender').val() == 'Female' && !$('body').hasClass('female')){
+			$('body').addClass('female');
+		}else if($('#settings_gender').val() == 'Male' && $('body').hasClass('female')){
+			$('body').removeClass('female');
+		}
 		trans.executeSql('UPDATE `settings` SET `string` = "'+escape($('#settings_name').val())+'" WHERE `ID` = "NAME"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_age').val()+'" WHERE `ID` = "AGE"');
 		trans.executeSql('UPDATE `settings` SET `integer` = "'+$('#settings_height').val()+'" WHERE `ID` = "HEIGHT"');

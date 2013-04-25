@@ -49,6 +49,7 @@ $('#first_launch_form').submit(function(e){
 function installDatabase(trans){
 	
 	/* SETTINGS */
+	window.localStorage.setItem("appGender", $('#first_launch_gender').val());
 	trans.executeSql('CREATE TABLE IF NOT EXISTS `settings` (`ID` varchar(255) PRIMARY KEY NOT NULL, `string` varchar(255) NULL, `integer` int(255) NULL)');
 	trans.executeSql('DELETE FROM `settings`');
 	trans.executeSql('INSERT INTO `settings` (`ID`, `string`, `integer`) VALUES ("NAME", "'+escape($('#first_launch_name').val())+'", NULL)');
