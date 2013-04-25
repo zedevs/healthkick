@@ -1,6 +1,6 @@
 body, html {
     overflow: hidden; /* Stop entire div having scrolling ability */
-    /* James' little tricks to make it nicer */
+    /* My little tricks to make it nicer */
     -webkit-user-select: none;
     -webkit-font-smoothing: antialiased;
     -webkit-touch-callout: none;
