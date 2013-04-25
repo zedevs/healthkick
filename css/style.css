@@ -281,6 +281,7 @@ ul.timescale_selector li:last-child {
     background: #69bfea;
     height: 100%;
     line-height: 30px;
+    clear: both;
 }
 
 
