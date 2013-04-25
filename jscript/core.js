@@ -18,7 +18,7 @@ $(document).ready(function() {
 	$('input, textarea').on('blur', function(){
 	    setTimeout(function(){
 	    	$('header, #content, footer, .did_you_know').css('position', 'fixed');
-	    }, 50);
+	    }, 20);
 	});
 	
 	/* MODAL-BOX HANDLER */

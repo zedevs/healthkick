@@ -25,7 +25,8 @@ $(document).ready(function(){
 	});
 	
 	function updateDatabase(trans){
-		trans.executeSql('INSERT INTO `achievements_records` (`ID`, `achievement_id`, `reading`, `time`) VALUES (NULL, '+window.localStorage.getItem("achievment_id")+', '+$('#update_achievement_reading').val()+', '+parseInt(Date.now())+')');
+		var date = new Date().getTime();
+		trans.executeSql('INSERT INTO `achievements_records` (`ID`, `achievement_id`, `reading`, `time`) VALUES (NULL, '+window.localStorage.getItem("achievment_id")+', '+$('#update_achievement_reading').val()+', '+(date)+')');
 	}
 	
 	function updateFailed(err) {

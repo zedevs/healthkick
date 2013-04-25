@@ -41,7 +41,6 @@ $(document).ready(function(){
 			$('.modal-validation-text').text(error);
 			$('.modal-validation-error, .dim').show();
 		}
-		
 		return false;
 	});
 	

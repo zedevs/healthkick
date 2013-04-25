@@ -273,6 +273,10 @@ ul.timescale_selector li:last-child {
     margin: 10px 0;
 }
 
+.percentage_bar div.complete {
+	background: #6edf7c;
+}
+
 .percentage_bar div {
     background: #69bfea;
     height: 100%;

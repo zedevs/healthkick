@@ -17,7 +17,8 @@ $(document).ready(function(){
 					last_submission = records.rows.item(0).reading;
 				}
 				percentage = ((last_submission-row.initial_reading)/(row.target-row.initial_reading)*100).toFixed(2);
-				if(percentage > 100) { percentage = 100;}else 
+				var extraClass = '';
+				if(percentage >= 100) { percentage = 100; extraClass = 'class="complete"'; }else 
 				if(percentage < 0) { percentage = 0; }
 				var achievement  = '<li>'
 								+ '<a href="#" id="achievment_'+row.ID+'">'
@@ -26,7 +27,7 @@ $(document).ready(function(){
 								+ '<span class="target"><strong>target:</strong> '+row.target+row.measurement+'</span> <span class="submission"><strong>last submission:</strong> '+last_submission+row.measurement+'</span>'
 								+ '</p>'
 								+ '<div class="percentage_bar">'
-								+ '<div style="width:'+percentage+'%">'+percentage+'%</div>'
+								+ '<div '+extraClass+' style="width:'+percentage+'%">'+percentage+'%</div>'
 								+ '</div>'
 								+ '</a>'
 								+ '</li>'

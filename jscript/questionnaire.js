@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 	function loadQuestions(){
 		
-		$.getJSON('http://jqmes.com/healthkick/daily_questions.php', function(data) {
+		$.getJSON('http://homepages.cs.ncl.ac.uk/2012-13/Csc2015Team1/daily_questions.php', function(data) {
 		questions_loaded = true;
 		$('.modal-downloading, .dim').hide();
 		  $.each(data, function(questionKey, questionData) {

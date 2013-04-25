@@ -13,9 +13,9 @@ $(document).ready(function(){
 			for(var i = 0; i < results.rows.length; i++){
 				var percentage = 0;
 				var last_submission;
-				
 				if(timeAgo > 0){
-					var recordsSQL = 'SELECT * FROM `achievements_records` WHERE `achievement_id` = '+results.rows.item(i).ID+' AND `time` > '+parseInt(Date.now()-timeAgo)+' ORDER BY `ID` DESC LIMIT 1';
+					var date = new Date().getTime();
+					var recordsSQL = 'SELECT * FROM `achievements_records` WHERE `achievement_id` = '+results.rows.item(i).ID+' AND `time` > '+(date-timeAgo)+' ORDER BY `ID` DESC LIMIT 1';
 				}else{
 					var recordsSQL = 'SELECT * FROM `achievements_records` WHERE `achievement_id` = '+results.rows.item(i).ID+' ORDER BY `ID` DESC LIMIT 1';
 				}
@@ -28,12 +28,12 @@ $(document).ready(function(){
 				}
 				percentage = ((last_submission-row.initial_reading)/(row.target-row.initial_reading)*100).toFixed(2);
 				
-				if(percentage > 100) { percentage = 100;}else 
-				if(percentage < 0){ percentage = 0; }
-				
+				var extraClass = '';
+				if(percentage >= 100) { percentage = 100; extraClass = 'class="complete"'; }else 
+				if(percentage < 0) { percentage = 0; }
 				var achievment  = '<p class="percentage_label">'+row.name+'</p>'
 								+ '<div class="percentage_bar">'
-								+ '<div style="width:'+percentage+'%">'+percentage+'%</div>'
+								+ '<div '+extraClass+' style="width:'+percentage+'%">'+percentage+'%</div>'
 								+ '</div>'
 				$('.dashboard_stats').prepend(achievment);
 				});
